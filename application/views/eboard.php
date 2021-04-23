@@ -375,7 +375,7 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
                                                                                     BULAN <?php echo strtoupper($v->bulan)?> <?php echo $v->tahun?></th>
                                           </tr>
                                           <tr>
-                                            <th style="width: 100px;font-size:16px;text-align: left;padding:5px">PAGU</th>
+                                            <th style="width: 100px;font-size:16px;text-align: left;padding:5px">TOTAL PAGU KESELURUHAN</th>
                                             <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $pagu[0]['pagu'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
