@@ -334,7 +334,7 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
         ?>
 			  <!-- <iframe id="videoElement" controls  width="320" height="200" src="http://www.youtube.com/embed/<!--?php echo $video[0]['link']?>?autoplay=1&loop=1&playlist=<!--?php echo $video[0]['link']?>" style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe> -->
           <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=<!--?php echo $video[0]['link']?>&autoplay=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe> -->
-          <iframe width="560" height="315" src="http://www.youtube.com/embed/<?php echo $vm;?>?version=3&loop=1&playlist=<?php foreach($video as $v) { 
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $vm;?>?version=3&loop=1&playlist=<?php foreach($video as $v) { 
             $video = str_replace("https://www.youtube.com/watch?v=","",$v->link); 
             echo $video.","; } 
           ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe>
@@ -359,7 +359,15 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
                         </ol>
                         <div class="carousel-inner">
                           <?php  $no2 = 0;
-                          foreach($realisasi as $v) { ?>
+                          $belanja_pegawai = 0;
+                          $belanja_barang = 0;
+                          $belanja_modal = 0;
+                          foreach($realisasi as $v) { 
+                            
+						                $belanja_pegawai = $belanja_pegawai+$v->belanja_pegawai;
+						                $belanja_barang = $belanja_barang+$v->belanja_barang;
+						                $belanja_modal = $belanja_modal+$v->belanja_pegawai;
+                            ?>
                           <div class="carousel-item  <?php if($no2==0){ echo "active"; } ?>">
                           
         <div class="row">
@@ -380,15 +388,15 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA PEGAWAI</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $v->belanja_pegawai, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_pegawai, 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA BARANG</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $v->belanja_barang, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_barang, 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA MODAL</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $v->belanja_modal, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_modal, 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;color: #00a65a;padding:5px">JUMLAH REALISASI</th>
