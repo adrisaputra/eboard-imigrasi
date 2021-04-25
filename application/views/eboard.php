@@ -248,9 +248,6 @@ p.ping {
 <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
-<?php 
-                            $no = 0;
-                            foreach($realisasi as $v) { ?>
 <style>
 #chartdiv<?php echo $no?> {
   width: 100%;
@@ -268,54 +265,50 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 
 // Create chart instance
-var chart<?php echo $no?> = am4core.create("chartdiv<?php echo $no?>", am4charts.PieChart);
+var chart = am4core.create("chartdiv", am4charts.PieChart);
 
 // Add data
-chart<?php echo $no?>.data = [ {
+chart.data = [ {
   "country": "BELANJA PEGAWAI",
   "color": am4core.color("#2196f3"),
-  "litres": <?php echo $v->belanja_pegawai; ?>
+  "litres": <?php echo $realisasi[0]['belanja_pegawai']; ?>
 }, {
   "country": "BELANJA BARANG",
   "color": am4core.color("#dd4b39"),
-  "litres": <?php echo $v->belanja_barang; ?>
+  "litres": <?php echo $realisasi[0]['belanja_barang']; ?>
 }, {
   "country": "BELANJA MODAL",
   "color": am4core.color("#00a65a"),
-  "litres": <?php echo $v->belanja_modal; ?>
+  "litres": <?php echo $realisasi[0]['belanja_modal']; ?>
 }, {
   "country": "SISA ANGGARAN",
-  "litres": <?php echo $pagu[0]['pagu']-($v->belanja_pegawai+$v->belanja_barang+$v->belanja_modal); ?>
+  "litres": <?php echo $pagu[0]['pagu']-($realisasi[0]['belanja_pegawai']+$realisasi[0]['belanja_barang']+$realisasi[0]['belanja_modal']); ?>
 }
 ];
 
 // Add and configure Series
-var pieSeries<?php echo $no?> = chart<?php echo $no?>.series.push(new am4charts.PieSeries());
-pieSeries<?php echo $no?>.dataFields.value = "litres";
-pieSeries<?php echo $no?>.dataFields.category = "country";
-pieSeries<?php echo $no?>.slices.template.stroke = am4core.color("#fff");
-pieSeries<?php echo $no?>.slices.template.strokeOpacity = 5;
-pieSeries<?php echo $no?>.slices.template.propertyFields.fill = "color";
-pieSeries<?php echo $no?>.ticks.template.disabled = true;
-pieSeries<?php echo $no?>.labels.template.disabled = true;
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeOpacity = 5;
+pieSeries.slices.template.propertyFields.fill = "color";
+pieSeries.ticks.template.disabled = true;
+pieSeries.labels.template.disabled = true;
 
 // This creates initial animation
-pieSeries<?php echo $no?>.hiddenState.properties.opacity = 1;
-pieSeries<?php echo $no?>.hiddenState.properties.endAngle = -90;
-pieSeries<?php echo $no?>.hiddenState.properties.startAngle = -90;
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
 // Create a base filter effect (as if it's not there) for the hover to return to
 
-chart<?php echo $no?>.hiddenState.properties.radius = am4core.percent(0);
+chart.hiddenState.properties.radius = am4core.percent(0);
 
 // Add a legend
-chart<?php echo $no?>.legend = new am4charts.Legend();
+chart.legend = new am4charts.Legend();
 
 }); // end am4core.ready()
 </script>
-
-<?php 
-                          $no++;
-                          } ?>
 
  <!-- Content Wrapper. Contains page content -->
   <div class="" >
@@ -328,17 +321,24 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-1 col-xs-12"></div>
-        <div class="col-lg-10 col-xs-12">
+        <div class="col-lg-1 col-xs-12" style="flex: 0 0 19.777777%;max-width: 19.777777%;padding-right: 0px;">
+        <img src="<?php echo base_url();?>upload/gambar/<?php echo $gambar[0]['gambar']?>" width="100%" height="520px">
+        </div>
+        <div class="col-lg-8 col-xs-12" style="flex: 0 0 43.6666666%;max-width: 43.6666666%;padding-right: 0px;padding-left: 0px;padding-top:10x">
         <?php 
         $vm = str_replace("https://www.youtube.com/watch?v=","",$video_primary[0]['link']); 
         ?>
 			  <!-- <iframe id="videoElement" controls  width="320" height="200" src="http://www.youtube.com/embed/<!--?php echo $video[0]['link']?>?autoplay=1&loop=1&playlist=<!--?php echo $video[0]['link']?>" style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe> -->
           <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=<!--?php echo $video[0]['link']?>&autoplay=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe> -->
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $vm;?>?version=3&loop=1&playlist=<?php foreach($video as $v) { 
+          <iframe width="300" height="515" src="https://www.youtube.com/embed/<?php echo $vm;?>?version=3&loop=1&playlist=<?php foreach($video as $v) { 
             $video = str_replace("https://www.youtube.com/watch?v=","",$v->link); 
             echo $video.","; } 
-          ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="background-color: white;margin-top: -3px;border-radius: 0px;width:100%; height:485px;object-fit:cover;"></iframe>
-        <p class=" text-center" style="font-size:16px;padding: 3px;margin-top: -4px;border-radius: 0px;background-color: #b10101;color:#ffffff"><b><marquee scrolldelay="30">-- <?php echo $bulletin1[0]['bulletin']?> --</marquee></b></p>
+          ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" style="background-color: white;margin-top: 0px;border-radius: 0px;width:100%; height:520px;object-fit:cover;"></iframe>
+        <!--p class=" text-center" style="font-size:16px;padding: 3px;margin-top: -4px;border-radius: 0px;background-color: #b10101;color:#ffffff"><b><marquee scrolldelay="30">-- <?php echo $bulletin1[0]['bulletin']?> --</marquee></b></p-->
+        </div>
+        
+        <div class="col-lg-1 col-xs-12" style="flex: 0 0 19.777777%;max-width: 19.777777%;padding-left: 0px;">
+        <img src="<?php echo base_url();?>upload/gambar/<?php echo $gambar[1]['gambar']?>" width="100%" height="520px">
         </div>
         <div class="col-lg-1 col-xs-12"></div>
       </div>
@@ -349,30 +349,16 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
               
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                          <?php 
-                            $no = 0;
-                            foreach($realisasi as $v) { ?>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="<?php echo $no?>" <?php if($no==0){ echo "class='active'"; } ?>></li>
-                          <?php 
-                          $no++;
-                        } ?>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                          <?php  $no2 = 0;
-                          $belanja_pegawai = 0;
-                          $belanja_barang = 0;
-                          $belanja_modal = 0;
-                          foreach($realisasi as $v) { 
-                            
-						                $belanja_pegawai = $belanja_pegawai+$v->belanja_pegawai;
-						                $belanja_barang = $belanja_barang+$v->belanja_barang;
-						                $belanja_modal = $belanja_modal+$v->belanja_pegawai;
-                            ?>
-                          <div class="carousel-item  <?php if($no2==0){ echo "active"; } ?>">
+                          <div class="carousel-item active">
                           
-        <div class="row">
+                            <div class="row">
                               <div class="col-lg-6 col-xs-12">
-                                    <div id="chartdiv<?php echo $no2?>"></div>
+                                    <div id="chartdiv"></div>
                               </div>
                               <div class="col-lg-6 col-xs-12">
                                   <div class="table-responsive box-body">
@@ -380,44 +366,190 @@ chart<?php echo $no?>.legend = new am4charts.Legend();
                                           <tr class="bg-red">
                                             <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff" colspan=2>REALISASI PENGGUNAAN ANGGARAN<br>
                                                                                     PENERIMAAN NEGARA BUKAN PAJAK(PNBP)<br>
-                                                                                    BULAN <?php echo strtoupper($v->bulan)?> <?php echo $v->tahun?></th>
+                                                                                    BULAN <?php echo strtoupper($realisasi[0]['bulan'])?> <?php echo $realisasi[0]['tahun']?></th>
                                           </tr>
-                                          <tr>
+                                          <tr class="bg-blue">
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">TOTAL PAGU KESELURUHAN</th>
                                             <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $pagu[0]['pagu'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA PEGAWAI</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_pegawai, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $realisasi[0]['belanja_pegawai'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA BARANG</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_barang, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $realisasi[0]['belanja_barang'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">BELANJA MODAL</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $belanja_modal, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;padding:5px"><?php echo number_format( $realisasi[0]['belanja_modal'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;color: #00a65a;padding:5px">JUMLAH REALISASI</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format( $v->belanja_pegawai+$v->belanja_barang+$v->belanja_modal, 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format( $realisasi[0]['belanja_pegawai']+$realisasi[0]['belanja_barang']+$realisasi[0]['belanja_modal'], 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;color: #00a65a;padding:5px">SISA PAGU</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format(  $pagu[0]['pagu']-($v->belanja_pegawai+$v->belanja_barang+$v->belanja_modal), 0, ',', '.');?></th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format(  $pagu[0]['pagu']-($realisasi[0]['belanja_pegawai']+$realisasi[0]['belanja_barang']+$realisasi[0]['belanja_modal']), 0, ',', '.');?></th>
                                           </tr>
                                           <tr>
                                             <th style="width: 100px;font-size:16px;text-align: left;color: #00a65a;padding:5px">PERSENTASI</th>
-                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format((($v->belanja_pegawai+$v->belanja_barang+$v->belanja_modal) * 100)/$pagu[0]['pagu'], 2, ',', '.');?> % </th>
+                                            <th style="width: 100px;font-size:18px;text-align: right;color: #00a65a;padding:5px"><?php echo number_format((($realisasi[0]['belanja_pegawai']+$realisasi[0]['belanja_barang']+$realisasi[0]['belanja_modal']) * 100)/$pagu[0]['pagu'], 2, ',', '.');?> % </th>
                                           </tr>
                                       </table>
                                   </div>
                               </div>
+                            </div>
                           </div>
+
+                          <div class="carousel-item">
+                          
+                            <div class="row">
+                              <div class="col-lg-6 col-xs-12">
+                                <div class="table-responsive box-body">
+                                    <table class="table table-bordered table-striped" >
+                                    
+                                    <tr class="bg-red">
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:10px" colspan=6>
+                                               PENERBITAN DOKUMEN PERJALANAN REPUBLIK INDONESIA</th>
+                                          </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 200px;font-size:14px;text-align: left;padding:3px" rowspan=3><center>JENIS PERMOHONAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:3px" colspan=4><center>JENIS DPRI</th>
+                                        <th style="width: 1px;font-size:14px;text-align: left;padding:3px" rowspan=3><center>JUMLAH</th>
+                                      </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px" colspan=2><center>48 Hal</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px" colspan=2><center>24 Hal</th>
+                                      </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>L</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>P</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>L</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>P</th>
+                                      </tr>
+                                      <?php 
+                                      $a = 0; $b = 0; $c = 0; $d = 0;
+                                      foreach($dokumen as $v){ 
+                                        $a = $a + $v->l48;
+                                        $b = $b + $v->p48;
+                                        $c = $c + $v->l24;
+                                        $d = $d + $v->p24;
+                                        ?>
+                                        <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px"><?php echo $v->jenis_permohonan;?></th>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->l48, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->p48, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->l24, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->p24, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( ($v->l48+$v->p48+$v->l24+$v->p24), 0, ',', '.');?></td>
+                                        </tr>
+                                      <?php } ?>
+                                      <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px">TOTAL PERMOHONAN</th>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $a, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $b, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $c, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $d, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( ($a+$b+$c+$d), 0, ',', '.');?></td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 col-xs-12">
+                              <div class="table-responsive box-body">
+                                    <table class="table table-bordered table-striped" >
+                                    
+                                    <tr class="bg-red">
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:10px" colspan=8>
+                                               PERLINTASAN KAPAL LAUT</th>
+                                          </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 200px;font-size:14px;text-align: left;padding:4px" rowspan=2><center>PELABUHAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>KAPAL</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>IN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>OUT</th>
+                                      </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>IN</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>OUT</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNI</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNA</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNI</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNA</th>
+                                      </tr>
+                                      <?php 
+                                      $a = 0; $b = 0; $c = 0; $d = 0; $e = 0; $f= 0;
+                                      foreach($pelabuhan as $v){ 
+                                        $a = $a + $v->kapal_in;
+                                        $b = $b + $v->kapal_out;
+                                        $c = $c + $v->in_crew_wni;
+                                        $d = $d + $v->in_crew_wna;
+                                        $e = $e + $v->out_crew_wni;
+                                        $f = $f + $v->out_crew_wna;
+                                        ?>
+                                        <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:11px"><?php echo $v->pelabuhan;?></th>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->kapal_in, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->kapal_out, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->in_crew_wni, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->in_crew_wna, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->out_crew_wni, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->out_crew_wna, 0, ',', '.');?></td>
+                                        </tr>
+                                      <?php } ?>
+                                      <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:11px">TOTAL PERMOHONAN</th>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $a, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $b, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $c, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $d, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $e, 0, ',', '.');?></td>
+                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $f, 0, ',', '.');?></td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                              </div>
+                            </div>
                           </div>
-                          <?php 
-                          $no2++;
-                          } ?>
+                          <div class="carousel-item">
+                          
+                            <div class="row">
+                              <div class="col-lg-12 col-xs-12">
+                                <div class="table-responsive box-body">
+                                    <table class="table table-bordered table-striped" >
+                                    
+                                    <tr class="bg-red">
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:5px" colspan=2>
+                                               PENERIMAAN NEGARA BUKAN PAJAK (PNBP)<br>
+                                               KANTOR IMIGRASI KELAS I TPI KENDARI<br>
+                                               SAMPAI DENGAN BULAN TAHUN <?php echo date('Y')?></th>
+                                          </tr>
+                                      <tr class="bg-blue">
+                                        <th style="width: 300px;font-size:14px;text-align: left;padding:3px"><center>JENIS PENERIMAAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:3px"><center>JUMLAH</th>
+                                      </tr>
+                                      <?php 
+                                      $a = 0;
+                                      foreach($penerimaan as $v){ 
+                                        $a = $a + $v->jumlah;
+                                        ?>
+                                        <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px"><?php echo $v->jenis_penerimaan;?></th>
+                                          <td style="width: 10px;font-size:16px;text-align: right;padding:4px"><?php echo number_format( $v->jumlah, 0, ',', '.');?></td>
+                                          </tr>
+                                      <?php } ?>
+                                      <tr>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px">TOTAL PENERIMAAN NEGARA BUKAN PAJAK (PNBP)</th>
+                                          <td style="width: 10px;font-size:16px;text-align: right;padding:4px"><?php echo number_format( $a, 0, ',', '.');?></td>
+                                          
+                                        </tr>
+                                    </table>
+                                  </div>
+                              </div>
+                          </div>
+
+
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

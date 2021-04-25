@@ -30,6 +30,26 @@
             <i class="fa fa-money-bill-wave"></i> <span>Anggaran</span>
           </a>
     </li>
+		<li class="<?php if($this->uri->segment(1)=='dokumen'){echo "active";}?>">
+          <a href="<?php echo base_url();?>dokumen">
+            <i class="fa fa-list"></i> <span>Dokumen</span>
+          </a>
+    </li>
+		<li class="<?php if($this->uri->segment(1)=='pelabuhan'){echo "active";}?>">
+          <a href="<?php echo base_url();?>pelabuhan">
+            <i class="fa fa-ship"></i> <span>Pelabuhan</span>
+          </a>
+    </li>
+		<li class="<?php if($this->uri->segment(1)=='penerimaan'){echo "active";}?>">
+          <a href="<?php echo base_url();?>penerimaan">
+            <i class="fa fa-boxes"></i> <span>Penerimaan</span>
+          </a>
+    </li>
+		<li class="<?php if($this->uri->segment(1)=='gambar'){echo "active";}?>">
+          <a href="<?php echo base_url();?>gambar">
+            <i class="fa fa-image"></i> <span>Gambar</span>
+          </a>
+    </li>
 		<li class="<?php if($this->uri->segment(1)=='video'){echo "active";}?>">
           <a href="<?php echo base_url();?>video">
             <i class="fa fa-video"></i> <span>Video</span>

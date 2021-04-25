@@ -17,6 +17,10 @@ class Eboard extends CI_Controller {
 		$data['realisasi']= $this->m_eboard->realisasi();
 		$data['video_primary']= $this->m_eboard->video_primary();
 		$data['video']= $this->m_eboard->video();
+		$data['dokumen']= $this->m_eboard->dokumen();
+		$data['pelabuhan']= $this->m_eboard->pelabuhan();
+		$data['penerimaan']= $this->m_eboard->penerimaan();
+		$data['gambar']= $this->m_eboard->gambar();
 		$this->load->view('eboard', $data);
 	}
 	

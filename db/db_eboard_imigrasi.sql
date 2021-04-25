@@ -31,6 +31,45 @@ INSERT INTO `bulletin_tbl` (`bulletin_id`, `posisi`, `bulletin`, `date`, `time`,
 	(2, 'Bawah', 'SELAMAT DATANG DI KANTOR IMIGRASI KOTA KENDARI', '2021-04-22', '10:20:49', '2021', 0);
 /*!40000 ALTER TABLE `bulletin_tbl` ENABLE KEYS */;
 
+-- membuang struktur untuk table db_eboard_imigrasi.dokumen_tbl
+CREATE TABLE IF NOT EXISTS `dokumen_tbl` (
+  `dokumen_id` int(255) NOT NULL AUTO_INCREMENT,
+  `jenis_permohonan` varchar(50) DEFAULT NULL,
+  `l48` int(11) DEFAULT NULL,
+  `p48` int(11) DEFAULT NULL,
+  `l24` int(11) DEFAULT NULL,
+  `p24` int(11) DEFAULT NULL,
+  PRIMARY KEY (`dokumen_id`) USING BTREE,
+  KEY `item_barcode` (`jenis_permohonan`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+
+-- Membuang data untuk tabel db_eboard_imigrasi.dokumen_tbl: ~7 rows (lebih kurang)
+/*!40000 ALTER TABLE `dokumen_tbl` DISABLE KEYS */;
+INSERT INTO `dokumen_tbl` (`dokumen_id`, `jenis_permohonan`, `l48`, `p48`, `l24`, `p24`) VALUES
+	(1, 'BARU', 1, 2, 3, 4),
+	(2, 'PENGGANTIAN HABIS BERLAKU', 2, 3, 4, 5),
+	(3, 'PENGGANTIAN HALAMAN PENUH', NULL, NULL, NULL, NULL),
+	(4, 'PENGGANTIAN KARENA HILANG', NULL, NULL, NULL, NULL),
+	(5, 'PENGGANTIAN KARENA RUSAK', NULL, NULL, NULL, NULL),
+	(6, 'ENDORSEMENT', NULL, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `dokumen_tbl` ENABLE KEYS */;
+
+-- membuang struktur untuk table db_eboard_imigrasi.gambar_tbl
+CREATE TABLE IF NOT EXISTS `gambar_tbl` (
+  `gambar_id` int(255) NOT NULL AUTO_INCREMENT,
+  `nama_gambar` varchar(500) DEFAULT NULL,
+  `gambar` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`gambar_id`) USING BTREE,
+  KEY `item_barcode` (`nama_gambar`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+
+-- Membuang data untuk tabel db_eboard_imigrasi.gambar_tbl: ~2 rows (lebih kurang)
+/*!40000 ALTER TABLE `gambar_tbl` DISABLE KEYS */;
+INSERT INTO `gambar_tbl` (`gambar_id`, `nama_gambar`, `gambar`) VALUES
+	(1, 'GAMBAR KIRI', 'GAMBAR_KIRI.jpeg'),
+	(2, 'GAMBAR KANAN', 'GAMBAR_KANAN1.jpg');
+/*!40000 ALTER TABLE `gambar_tbl` ENABLE KEYS */;
+
 -- membuang struktur untuk table db_eboard_imigrasi.groups
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -57,9 +96,9 @@ CREATE TABLE IF NOT EXISTS `logger_tbl` (
   `token` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel db_eboard_imigrasi.logger_tbl: ~116 rows (lebih kurang)
+-- Membuang data untuk tabel db_eboard_imigrasi.logger_tbl: ~185 rows (lebih kurang)
 /*!40000 ALTER TABLE `logger_tbl` DISABLE KEYS */;
 INSERT INTO `logger_tbl` (`id`, `created_on`, `created_by`, `type`, `type_id`, `token`, `comment`) VALUES
 	(1, '2019-12-10 21:16:49', 1, 'post', 0, 'Login', ''),
@@ -218,7 +257,40 @@ INSERT INTO `logger_tbl` (`id`, `created_on`, `created_by`, `type`, `type_id`, `
 	(154, '2021-04-23 14:04:03', 1, 'post', 0, 'Ubah Video', ''),
 	(155, '2021-04-23 14:05:05', 1, 'post', 0, 'Tambah Video', ''),
 	(156, '2021-04-23 14:15:58', 1, 'post', 0, 'Tambah Video', ''),
-	(157, '2021-04-23 14:22:21', 1, 'post', 18, 'Hapus Video Kapal', '');
+	(157, '2021-04-23 14:22:21', 1, 'post', 18, 'Hapus Video Kapal', ''),
+	(158, '2021-04-24 11:00:31', 1, 'post', 0, 'Login', ''),
+	(159, '2021-04-25 11:12:26', 1, 'post', 0, 'Login', ''),
+	(160, '2021-04-25 16:16:04', 1, 'post', 0, 'Login', ''),
+	(161, '2021-04-25 18:51:47', 1, 'post', 0, 'Login', ''),
+	(162, '2021-04-25 19:00:10', 1, 'post', 2, 'Ubah Dokumen', ''),
+	(163, '2021-04-25 19:00:16', 1, 'post', 2, 'Ubah Dokumen', ''),
+	(164, '2021-04-25 19:04:52', 1, 'post', 0, 'Tambah Dokumen', ''),
+	(165, '2021-04-25 19:04:56', 1, 'post', 7, 'Hapus Dokumen', ''),
+	(166, '2021-04-25 19:05:14', 1, 'post', 4, 'Hapus Realisasi', ''),
+	(167, '2021-04-25 22:09:57', 1, 'post', 0, 'Login', ''),
+	(168, '2021-04-25 22:10:26', 1, 'post', 1, 'Ubah Dokumen', ''),
+	(169, '2021-04-25 22:35:37', 1, 'post', 1, 'Ubah Pelabuhan', ''),
+	(170, '2021-04-25 22:47:41', 1, 'post', 0, 'Tambah Pelabuhan', ''),
+	(171, '2021-04-25 22:47:45', 1, 'post', 5, 'Hapus Pelabuhan', ''),
+	(172, '2021-04-25 23:02:25', 1, 'post', 1, 'Ubah Pelabuhan', ''),
+	(173, '2021-04-25 23:02:31', 1, 'post', 1, 'Ubah Pelabuhan', ''),
+	(174, '2021-04-25 23:03:23', 1, 'post', 0, 'Tambah Pelabuhan', ''),
+	(175, '2021-04-25 23:03:26', 1, 'post', 6, 'Hapus Pelabuhan', ''),
+	(176, '2021-04-25 23:15:28', 1, 'post', 1, 'Ubah Pelabuhan', ''),
+	(177, '2021-04-25 23:15:42', 1, 'post', 3, 'Ubah Pelabuhan', ''),
+	(178, '2021-04-26 00:05:13', 1, 'post', 0, 'Tambah Gambar', ''),
+	(179, '2021-04-26 00:08:01', 1, 'post', 0, 'Ubah Gambar', ''),
+	(180, '2021-04-26 00:09:04', 1, 'post', 0, 'Ubah Gambar', ''),
+	(181, '2021-04-26 00:09:58', 1, 'post', 0, 'Ubah Gambar', ''),
+	(182, '2021-04-26 00:10:40', 1, 'post', 0, 'Tambah Gambar', ''),
+	(183, '2021-04-26 00:10:48', 1, 'post', 0, 'Tambah Gambar', ''),
+	(184, '2021-04-26 00:10:55', 1, 'post', 0, 'Ubah Gambar', ''),
+	(185, '2021-04-26 00:11:00', 1, 'post', 0, 'Ubah Gambar', ''),
+	(186, '2021-04-26 00:14:07', 1, 'post', 0, 'Ubah Gambar', ''),
+	(187, '2021-04-26 00:20:26', 1, 'post', 0, 'Ubah Gambar', ''),
+	(188, '2021-04-26 00:21:19', 1, 'post', 0, 'Ubah Gambar', ''),
+	(189, '2021-04-26 00:25:47', 1, 'post', 5, 'Hapus Realisasi', ''),
+	(190, '2021-04-26 00:26:05', 1, 'post', 0, 'Tambah Realisasi', '');
 /*!40000 ALTER TABLE `logger_tbl` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_eboard_imigrasi.pagu_tbl
@@ -235,6 +307,48 @@ INSERT INTO `pagu_tbl` (`pagu_id`, `tahun`, `pagu`) VALUES
 	(1, 2021, 150000000);
 /*!40000 ALTER TABLE `pagu_tbl` ENABLE KEYS */;
 
+-- membuang struktur untuk table db_eboard_imigrasi.pelabuhan_tbl
+CREATE TABLE IF NOT EXISTS `pelabuhan_tbl` (
+  `pelabuhan_id` int(255) NOT NULL AUTO_INCREMENT,
+  `pelabuhan` varchar(255) DEFAULT NULL,
+  `kapal_in` double DEFAULT NULL,
+  `kapal_out` double DEFAULT NULL,
+  `in_crew_wni` double DEFAULT NULL,
+  `in_crew_wna` double DEFAULT NULL,
+  `out_crew_wni` double DEFAULT NULL,
+  `out_crew_wna` double DEFAULT NULL,
+  PRIMARY KEY (`pelabuhan_id`) USING BTREE,
+  KEY `item_barcode` (`pelabuhan`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+
+-- Membuang data untuk tabel db_eboard_imigrasi.pelabuhan_tbl: ~4 rows (lebih kurang)
+/*!40000 ALTER TABLE `pelabuhan_tbl` DISABLE KEYS */;
+INSERT INTO `pelabuhan_tbl` (`pelabuhan_id`, `pelabuhan`, `kapal_in`, `kapal_out`, `in_crew_wni`, `in_crew_wna`, `out_crew_wni`, `out_crew_wna`) VALUES
+	(1, 'KENDARI (BUNGKUTOKO)', 1, 1, 20, 20, 20, 20),
+	(2, 'KONAWE (MOROSI)', NULL, NULL, NULL, NULL, NULL, NULL),
+	(3, 'BOMBANA (PARIA)', NULL, NULL, NULL, NULL, NULL, NULL),
+	(4, 'KOLAKA (POMALAA)', NULL, NULL, NULL, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `pelabuhan_tbl` ENABLE KEYS */;
+
+-- membuang struktur untuk table db_eboard_imigrasi.penerimaan_tbl
+CREATE TABLE IF NOT EXISTS `penerimaan_tbl` (
+  `penerimaan_id` int(255) NOT NULL AUTO_INCREMENT,
+  `jenis_penerimaan` varchar(500) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL,
+  PRIMARY KEY (`penerimaan_id`) USING BTREE,
+  KEY `item_barcode` (`jenis_penerimaan`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+
+-- Membuang data untuk tabel db_eboard_imigrasi.penerimaan_tbl: ~5 rows (lebih kurang)
+/*!40000 ALTER TABLE `penerimaan_tbl` DISABLE KEYS */;
+INSERT INTO `penerimaan_tbl` (`penerimaan_id`, `jenis_penerimaan`, `jumlah`) VALUES
+	(1, 'DOKUMEN PERJALANAN REPUBLIK INDONESIA (DPRI)', 500000000),
+	(2, 'VISA (Visa Kunjungan, Visa Tinggal Terbatas, Persetujuan Visa Direktur Jendral Imigrasi))', NULL),
+	(3, 'IZIN KEIMIGRASIAN (Izin Kunjungan, Izin Tinggal Terbatas, Izin Tinggal Tetap, Izin Masuk Kembali (Re Entry Permit))', 10000000000),
+	(4, 'PNPB KEIMIGRASIAN LAINNYA (Biaya Beban, Smart Card, Kartu Perjalanan Pebisnis Asia Pacific Economic Cooperation(KPP APEC)/APEC Bussines Travel Card (ABTC), Fasilitas Keimigrasian (Afidavit) Bagi Anak Berkewarganegaraan Ganda, Surat Keimigrasian)', NULL),
+	(5, 'SEWA RUMAH DINAS', NULL);
+/*!40000 ALTER TABLE `penerimaan_tbl` ENABLE KEYS */;
+
 -- membuang struktur untuk table db_eboard_imigrasi.realisasi_tbl
 CREATE TABLE IF NOT EXISTS `realisasi_tbl` (
   `realisasi_id` int(255) NOT NULL AUTO_INCREMENT,
@@ -246,37 +360,13 @@ CREATE TABLE IF NOT EXISTS `realisasi_tbl` (
   `belanja_modal` double DEFAULT NULL,
   PRIMARY KEY (`realisasi_id`) USING BTREE,
   KEY `item_barcode` (`bulan`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
 -- Membuang data untuk tabel db_eboard_imigrasi.realisasi_tbl: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `realisasi_tbl` DISABLE KEYS */;
 INSERT INTO `realisasi_tbl` (`realisasi_id`, `bulan`, `bln`, `tahun`, `belanja_pegawai`, `belanja_barang`, `belanja_modal`) VALUES
-	(4, 'Januari', 1, 2021, 10000000, 10000000, 10000000),
-	(5, 'Februari', 2, 2021, 15000000, 15000000, 15000000);
+	(7, 'Februari', 2, 2021, 15000000, 15000000, 15000000);
 /*!40000 ALTER TABLE `realisasi_tbl` ENABLE KEYS */;
-
--- membuang struktur untuk table db_eboard_imigrasi.ship_tbl
-CREATE TABLE IF NOT EXISTS `ship_tbl` (
-  `ship_id` int(255) NOT NULL AUTO_INCREMENT,
-  `ship_name` varchar(255) DEFAULT NULL,
-  `destination` varchar(255) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `start_time` time DEFAULT NULL,
-  `leaning_date` date DEFAULT NULL,
-  `leaning_time` time DEFAULT NULL,
-  `arrived_date` date DEFAULT NULL,
-  `arrived_time` time DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL,
-  `year` year(4) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`ship_id`) USING BTREE,
-  KEY `item_barcode` (`ship_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
-
--- Membuang data untuk tabel db_eboard_imigrasi.ship_tbl: ~0 rows (lebih kurang)
-/*!40000 ALTER TABLE `ship_tbl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ship_tbl` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_eboard_imigrasi.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -304,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Membuang data untuk tabel db_eboard_imigrasi.users: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `photo`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2y$08$26mKnzSjBK54Sq8mCED/de71U3p0Qn5QesJBIN4uLen9rNtVR4LrG', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1619142644, 1, 'Admin', '', NULL, '', '1.png'),
+	(1, '127.0.0.1', 'administrator', '$2y$08$26mKnzSjBK54Sq8mCED/de71U3p0Qn5QesJBIN4uLen9rNtVR4LrG', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1619359797, 1, 'Admin', '', NULL, '', '1.png'),
 	(2, '::1', 'xx', '$2y$08$RkZxhJdy3tdgfDpkYQwtkOgrBv0rLtsaRyM6dQKHQj8O.InMQcM3m', NULL, 'xx@gmail.com', NULL, NULL, NULL, NULL, 1579746110, 1580978909, 1, 'xxx', 'xxx', NULL, '', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
@@ -341,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `video_tbl` (
   KEY `item_barcode` (`video_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
--- Membuang data untuk tabel db_eboard_imigrasi.video_tbl: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_eboard_imigrasi.video_tbl: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `video_tbl` DISABLE KEYS */;
 INSERT INTO `video_tbl` (`video_id`, `video_name`, `link`, `date`, `time`, `year`, `status`) VALUES
 	(16, 'aaaaa', 'https://www.youtube.com/watch?v=nCls0rnZMYI', '2020-02-07', '05:34:35', '2020', 0),

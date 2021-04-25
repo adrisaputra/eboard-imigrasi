@@ -16,6 +16,34 @@ class M_eboard extends CI_Model {
 		return $query->result();
 	}
 	
+	public function dokumen() {
+		$this->db->select('*');
+		$this->db->from('dokumen_tbl');
+		$query = $this->db->get ();
+		return $query->result();
+	}
+	
+	public function pelabuhan() {
+		$this->db->select('*');
+		$this->db->from('pelabuhan_tbl');
+		$query = $this->db->get ();
+		return $query->result();
+	}
+	
+	public function penerimaan() {
+		$this->db->select('*');
+		$this->db->from('penerimaan_tbl');
+		$query = $this->db->get ();
+		return $query->result();
+	}
+	
+	public function gambar() {
+		$this->db->select('*');
+	  	$this->db->from('gambar_tbl');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function bulletin1() {
         	$this->db->select('*');
 		$this->db->from('bulletin_tbl');
@@ -45,7 +73,7 @@ class M_eboard extends CI_Model {
 		$this->db->where('tahun',date('Y'));
 		$this->db->order_by('bln','ASC');
         	$query = $this->db->get();
-        	return $query->result();
+        	return $query->result_array();
     }
 	
 	

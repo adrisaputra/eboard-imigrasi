@@ -12,7 +12,6 @@ class Dashboard extends Admin_Controller {
 	public function index()
 	{
 		if ($this->ion_auth->get_users_groups()->row()->id){
-			$this->data['ship'] = $this->m_dashboard->count_ship();
 			$this->data['user'] = $this->m_dashboard->count_user();
 			$this->render('dashboard');
 		} else {
