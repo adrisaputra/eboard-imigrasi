@@ -364,9 +364,10 @@ chart.legend = new am4charts.Legend();
                                   <div class="table-responsive box-body">
                                       <table class="table table-bordered table-striped" >
                                           <tr class="bg-red">
-                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff" colspan=2>REALISASI PENGGUNAAN ANGGARAN<br>
-                                                                                    PENERIMAAN NEGARA BUKAN PAJAK(PNBP)<br>
-                                                                                    BULAN <?php echo strtoupper($realisasi[0]['bulan'])?> <?php echo $realisasi[0]['tahun']?></th>
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff" colspan=2>
+                                            REALISASI ANGGARAN<br>
+                                            KANTOR IMIGRASI KELAS I TPI KENDARI<br>
+                                            SAMPAI DENGAN BULAN <?php echo strtoupper($realisasi[0]['bulan'])?> <?php echo $realisasi[0]['tahun']?></th>
                                           </tr>
                                           <tr class="bg-blue">
                                             <th style="width: 100px;font-size:16px;text-align: left;padding:5px">TOTAL PAGU KESELURUHAN</th>
@@ -405,28 +406,41 @@ chart.legend = new am4charts.Legend();
                           <div class="carousel-item">
                           
                             <div class="row">
+                            
+                            <div class="col-lg-12 col-xs-12">
+                              <div class="table-responsive box-body" style="margin-bottom: -20px;">
+                                <table class="table table-bordered table-striped" >
+                                  <tr class="bg-red">
+                                    <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:2px;" colspan=6>
+                                    LAYANAN KEIMIGRASIAN<br>
+                                               KANTOR IMIGRASI KELAS I TPI KENDARI<br>
+                                               SAMPAI DENGAN BULAN <?php echo strtoupper($realisasi[0]['bulan'])?> TAHUN <?php echo $realisasi[0]['tahun']?></th>
+                                  </tr>
+                                </table>
+                              </div>
+                            </div>
                               <div class="col-lg-6 col-xs-12">
                                 <div class="table-responsive box-body">
                                     <table class="table table-bordered table-striped" >
                                     
                                     <tr class="bg-red">
-                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:10px" colspan=6>
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:2px" colspan=6>
                                                PENERBITAN DOKUMEN PERJALANAN REPUBLIK INDONESIA</th>
                                           </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 200px;font-size:14px;text-align: left;padding:3px" rowspan=3><center>JENIS PERMOHONAN</th>
-                                        <th style="width: 100px;font-size:14px;text-align: left;padding:3px" colspan=4><center>JENIS DPRI</th>
-                                        <th style="width: 1px;font-size:14px;text-align: left;padding:3px" rowspan=3><center>JUMLAH</th>
+                                        <th style="width: 200px;font-size:14px;text-align: left;padding:2px" rowspan=3><center>JENIS PERMOHONAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:2px" colspan=4><center>JENIS DPRI</th>
+                                        <th style="width: 1px;font-size:14px;text-align: left;padding:2px" rowspan=3><center>JUMLAH</th>
                                       </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px" colspan=2><center>48 Hal</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px" colspan=2><center>24 Hal</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px" colspan=2><center>48 Hal</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px" colspan=2><center>24 Hal</th>
                                       </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>L</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>P</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>L</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:3px"><center>P</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>L</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>P</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>L</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>P</th>
                                       </tr>
                                       <?php 
                                       $a = 0; $b = 0; $c = 0; $d = 0;
@@ -437,21 +451,21 @@ chart.legend = new am4charts.Legend();
                                         $d = $d + $v->p24;
                                         ?>
                                         <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px"><?php echo $v->jenis_permohonan;?></th>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->l48, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->p48, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->l24, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $v->p24, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( ($v->l48+$v->p48+$v->l24+$v->p24), 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:1px"><?php echo $v->jenis_permohonan;?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:1px"><center><?php echo number_format( $v->l48, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:1px"><center><?php echo number_format( $v->p48, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:1px"><center><?php echo number_format( $v->l24, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:1px"><center><?php echo number_format( $v->p24, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( ($v->l48+$v->p48+$v->l24+$v->p24), 0, ',', '.');?></th>
                                         </tr>
                                       <?php } ?>
                                       <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px">TOTAL PERMOHONAN</th>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $a, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $b, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $c, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( $d, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:4px"><center><?php echo number_format( ($a+$b+$c+$d), 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;color: #00a65a;padding:1px">TOTAL PERMOHONAN</th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( $a, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( $b, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( $c, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( $d, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:1px"><center><?php echo number_format( ($a+$b+$c+$d), 0, ',', '.');?></th>
                                         </tr>
                                     </table>
                                   </div>
@@ -461,22 +475,22 @@ chart.legend = new am4charts.Legend();
                                     <table class="table table-bordered table-striped" >
                                     
                                     <tr class="bg-red">
-                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:10px" colspan=8>
+                                            <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:2px" colspan=8>
                                                PERLINTASAN KAPAL LAUT</th>
                                           </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 200px;font-size:14px;text-align: left;padding:4px" rowspan=2><center>PELABUHAN</th>
-                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>KAPAL</th>
-                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>IN</th>
-                                        <th style="width: 100px;font-size:14px;text-align: left;padding:4px" colspan=2><center>OUT</th>
+                                        <th style="width: 200px;font-size:14px;text-align: left;padding:2px" rowspan=2><center>PELABUHAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:2px" colspan=2><center>KAPAL</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:2px" colspan=2><center>IN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:2px" colspan=2><center>OUT</th>
                                       </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>IN</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>OUT</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNI</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNA</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNI</th>
-                                        <th style="width: 10px;font-size:14px;text-align: left;padding:4px"><center>CREW WNA</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>IN</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>OUT</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>CREW WNI</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>CREW WNA</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>CREW WNI</th>
+                                        <th style="width: 10px;font-size:14px;text-align: left;padding:2px"><center>CREW WNA</th>
                                       </tr>
                                       <?php 
                                       $a = 0; $b = 0; $c = 0; $d = 0; $e = 0; $f= 0;
@@ -489,23 +503,23 @@ chart.legend = new am4charts.Legend();
                                         $f = $f + $v->out_crew_wna;
                                         ?>
                                         <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:11px"><?php echo $v->pelabuhan;?></th>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->kapal_in, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->kapal_out, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->in_crew_wni, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->in_crew_wna, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->out_crew_wni, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $v->out_crew_wna, 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:7px"><?php echo $v->pelabuhan;?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->kapal_in, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->kapal_out, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->in_crew_wni, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->in_crew_wna, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->out_crew_wni, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;padding:7px"><center><?php echo number_format( $v->out_crew_wna, 0, ',', '.');?></th>
                                         </tr>
                                       <?php } ?>
                                       <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:11px">TOTAL PERMOHONAN</th>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $a, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $b, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $c, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $d, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $e, 0, ',', '.');?></td>
-                                          <td style="width: 10px;font-size:16px;text-align: left;padding:11px"><center><?php echo number_format( $f, 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;color: #00a65a;padding:11px">TOTAL PERLINTASAN</th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $a, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $b, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $c, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $d, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $e, 0, ',', '.');?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: left;color: #00a65a;padding:11px"><center><?php echo number_format( $f, 0, ',', '.');?></th>
                                         </tr>
                                     </table>
                                   </div>
@@ -523,11 +537,11 @@ chart.legend = new am4charts.Legend();
                                             <th style="width: 100px;font-size:16px;text-align:center;background-color: #b10101;color:#ffffff;padding:5px" colspan=2>
                                                PENERIMAAN NEGARA BUKAN PAJAK (PNBP)<br>
                                                KANTOR IMIGRASI KELAS I TPI KENDARI<br>
-                                               SAMPAI DENGAN BULAN TAHUN <?php echo date('Y')?></th>
+                                               SAMPAI DENGAN BULAN <?php echo strtoupper($realisasi[0]['bulan'])?> TAHUN <?php echo $realisasi[0]['tahun']?></th>
                                           </tr>
                                       <tr class="bg-blue">
-                                        <th style="width: 300px;font-size:14px;text-align: left;padding:3px"><center>JENIS PENERIMAAN</th>
-                                        <th style="width: 100px;font-size:14px;text-align: left;padding:3px"><center>JUMLAH</th>
+                                        <th style="width: 300px;font-size:14px;text-align: left;padding:2px"><center>JENIS PENERIMAAN</th>
+                                        <th style="width: 100px;font-size:14px;text-align: left;padding:2px"><center>JUMLAH</th>
                                       </tr>
                                       <?php 
                                       $a = 0;
@@ -535,13 +549,13 @@ chart.legend = new am4charts.Legend();
                                         $a = $a + $v->jumlah;
                                         ?>
                                         <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px"><?php echo $v->jenis_penerimaan;?></th>
-                                          <td style="width: 10px;font-size:16px;text-align: right;padding:4px"><?php echo number_format( $v->jumlah, 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;padding:3px"><?php echo $v->jenis_penerimaan;?></th>
+                                          <th style="width: 10px;font-size:18px;text-align: right;padding:3px"><?php echo number_format( $v->jumlah, 0, ',', '.');?></th>
                                           </tr>
                                       <?php } ?>
                                       <tr>
-                                          <th style="width: 10px;font-size:16px;text-align: left;padding:4px">TOTAL PENERIMAAN NEGARA BUKAN PAJAK (PNBP)</th>
-                                          <td style="width: 10px;font-size:16px;text-align: right;padding:4px"><?php echo number_format( $a, 0, ',', '.');?></td>
+                                          <th style="width: 10px;font-size:16px;text-align: left;color: #00a65a;padding:3px">TOTAL PENERIMAAN NEGARA BUKAN PAJAK (PNBP)</th>
+                                          <th style="width: 10px;font-size:18px;text-align: right;color: #00a65a;padding:3px"><?php echo number_format( $a, 0, ',', '.');?></th>
                                           
                                         </tr>
                                     </table>
