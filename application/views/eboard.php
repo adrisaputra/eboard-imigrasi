@@ -347,7 +347,7 @@ chart.legend = new am4charts.Legend();
         <div class="col-lg-10 col-xs-12">
         <div class="bd-example" style="background-color: white;">
               
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="20000">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>

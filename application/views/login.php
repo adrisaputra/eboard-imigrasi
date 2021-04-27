@@ -30,15 +30,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition">
-<div class="login-box" style="padding-top:40px">
-  <div class="login-logo">
-  <!--img src="<!--?php echo base_url();?>upload/logo.png" height="120px" width="110px"><br-->
-  <b>LOGIN</b>
-  </div>
+<div class="login-box" style="padding-top:70px">
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-
+  <div class="text-center">
+    <img src="<?php echo base_url();?>upload/logo/login.png" alt="Chris Wood" class="img-fluid" style="height: 110px;max-width: 100%;max-height: 100%;" >
+  </div><br>
+    
 	<form action="<?php echo base_url();?>login" method="post" accept-charset="utf-8">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Email" name="identity">
