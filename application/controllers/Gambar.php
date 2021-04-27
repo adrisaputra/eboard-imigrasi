@@ -56,7 +56,7 @@ class Gambar extends Admin_Controller {
 		{	
 			$filename = $this->input->post('nama_gambar');
 			$config['upload_path']      = './upload/gambar/';
-			$config['allowed_types']    = 'jpg|jpeg|png';
+			$config['allowed_types']    = 'jpg|jpeg|png|gif';
 			$config['max_size']         = 200000000;
 			$config['max_width']        = 100000;
 			$config['max_height']   	= 100000;
@@ -123,7 +123,7 @@ class Gambar extends Admin_Controller {
 		{	
 			$filename = $this->input->post('nama_gambar');
 			$config['upload_path']      = './upload/gambar/';
-			$config['allowed_types']    = 'jpg|jpeg|png';
+			$config['allowed_types']    = 'jpg|jpeg|png|gif';
 			$config['max_size']         = 200000000;
 			$config['max_width']        = 100000;
 			$config['max_height']   	= 100000;
