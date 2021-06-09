@@ -18,7 +18,7 @@
           <div class="box">
             <div class="box-header with-border">
                 <div class="col-md-8">
-                  <!-- <a href="<?php echo base_url();?>pelabuhan/create_view/<?php echo $this->uri->segment('3')?>" class="btn btn-success">Tambah Data</a> -->
+                  <a href="<?php echo base_url();?>pelabuhan/create_view/<?php echo $this->uri->segment('3')?>" class="btn btn-success">Tambah Data</a>
                   <a href="<?php echo base_url();?>pagu" class="btn btn-warning">Kembali</a>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                   <td>
 					<center>
 						<a href="<?php echo base_url();?>pelabuhan/update_view/<?php echo encrypt_url($v->pelabuhan_id)?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah Pelabuhan"><i class="fa fa-pencil-alt"></i></a>
-						<!-- <a href="<?php echo base_url();?>pelabuhan/delete/<?php echo encrypt_url($v->pelabuhan_id)?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus Pelabuhan" onclick="return confirm('Anda Yakin ?');"><i class="fa fa-trash"></i></a> -->
+						<a href="<?php echo base_url();?>pelabuhan/delete/<?php echo encrypt_url($v->pelabuhan_id)?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus Pelabuhan" onclick="return confirm('Anda Yakin ?');"><i class="fa fa-trash"></i></a>
 					</center>
 				  </td>
                 </tr>
